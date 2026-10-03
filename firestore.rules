@@ -1,0 +1,18 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ✏️ যাদের ইমেইল এই তালিকায় থাকবে শুধু তারাই ডেটা দেখতে/লিখতে পারবে।
+    // নিজের (আর চাইলে স্টাফের) ইমেইল বসান — ছোট হাতের অক্ষরে।
+    function allowed() {
+      return request.auth != null
+        && request.auth.token.email in ['namaari.bd@gmail.com'];
+    }
+    match /businesses/{biz}/{document=**} {
+      allow read, write: if allowed();
+    }
+    // বাকি সব বন্ধ
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

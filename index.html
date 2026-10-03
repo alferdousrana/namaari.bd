@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Namaari — ব্যবসার খাতা</title>
+  <meta name="description" content="Namaari ক্লোদিং ব্যবসার অর্ডার, স্টক, হিসাব ও দৈনিক কাজের অ্যাপ">
+  <meta name="theme-color" content="#5b2a5e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Namaari">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <script>
+    // পেজ লোডের আগেই থিম বসাই, যাতে সাদা ঝলক না দেখা যায়
+    (function () {
+      var m = localStorage.getItem('namaari_theme') || 'system';
+      var dark = m === 'dark' || (m === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Tiro+Bangla&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/app.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+  <script type="module" src="assets/js/app.js"></script>
+</head>
+<body>
+  <div id="app"><div class="loader"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#5b2a5e"/><circle class="mark-ring" cx="32" cy="32" r="24.5"/></svg></div></div>
+  <div id="toasts" aria-live="polite"></div>
+  <div id="print-area"></div>
+  <noscript>এই অ্যাপ চালাতে JavaScript চালু করুন।</noscript>
+</body>
+</html>
